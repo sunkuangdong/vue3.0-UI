@@ -1,6 +1,4 @@
 <template>
-<router-link to="/">Frank</router-link>
-<router-link to="/xxx">Frank2</router-link>
 <router-view />
 </template>
 

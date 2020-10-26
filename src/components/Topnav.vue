@@ -9,14 +9,14 @@
 </div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 export default {
-    name: '',
+    name: "",
     data() {
-        return {}
+        return {};
     },
-    methods: {}
-}
+    methods: {},
+};
 </script>
 
 <style lang="scss" scoped>
@@ -24,6 +24,8 @@ export default {
     background: pink;
     display: flex;
     padding: 16px;
+    position: relative;
+    z-index: 10;
 
     >.logo {
         max-width: 6em;

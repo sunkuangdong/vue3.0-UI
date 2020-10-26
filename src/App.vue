@@ -3,12 +3,17 @@
 </template>
 
 <script>
+import {
+    provide,
+    ref
+} from "vue";
 import Frank from "./components/Frank.vue";
 
 export default {
     name: "App",
-    components: {
-        Frank,
+    setup() {
+        const menuVisible = ref(false);
+        provide("xxx", menuVisible);
     },
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
 <div class="topnav">
-    <div class="logo">LOGO</div>
+    <div class="logo" @click="toogleMenu">LOGO</div>
     <div class="menu"></div>
     <ul class="menu">
         <li>菜单1</li>
@@ -10,12 +10,20 @@
 </template>
 
 <script lang="ts">
+import {
+    inject,
+    Ref
+} from "vue";
 export default {
-    name: "",
-    data() {
-        return {};
+    setup() {
+        const meneVisible = inject < Ref < Boolean > > ("xxx");
+        const toogleMenu = () => {
+            meneVisible.value = !meneVisible.value;
+        };
+        return {
+            toogleMenu
+        };
     },
-    methods: {},
 };
 </script>
 

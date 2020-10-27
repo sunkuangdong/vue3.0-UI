@@ -1,6 +1,7 @@
 <template>
 <div>
-    <Switch :value="y" @input="y = $event" />
+    <!-- <Switch :value="y" @input="y = $event" /> -->
+    <Switch v-model:value="SwitchFlag" />
 </div>
 </template>
 
@@ -14,9 +15,9 @@ export default {
         Switch,
     },
     setup() {
-        const y = ref(false)
+        const SwitchFlag = ref(false)
         return {
-            y
+            SwitchFlag
         }
     }
 };

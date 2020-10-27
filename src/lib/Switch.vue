@@ -1,9 +1,7 @@
 <template>
-<div>
-    <button>
-        <span></span>
-    </button>
-</div>
+<button>
+    <span></span>
+</button>
 </template>
 
 <script>
@@ -27,6 +25,10 @@ button {
     background: blue;
     border-radius: $h/2;
     position: relative;
+
+    &:hover>span {
+        left: calc(100% - #{$h2} - 2px);
+    }
 }
 
 span {

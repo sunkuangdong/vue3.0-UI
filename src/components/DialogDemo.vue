@@ -1,16 +1,16 @@
 <template>
-<div>Dialog</div>
+  <div>
+    <h1>示例1</h1>
+    <Dialog />
+  </div>
 </template>
 
 <script>
+import Dialog from "../lib/Dialog.vue";
 export default {
-    name: "",
-    data() {
-        return {};
-    },
-    methods: {},
+  components: { Dialog },
 };
 </script>
 
-<style scoped lang=scss>
+<style scoped lang="scss">
 </style>

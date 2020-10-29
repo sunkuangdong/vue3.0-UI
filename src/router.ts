@@ -1,11 +1,11 @@
 import { createWebHashHistory, createRouter } from 'vue-router'
-import Home from "./views/Home.vue"
-import Doc from "./views/Doc.vue"
-import SwitchDemo from "./components/SwitchDemo.vue"
-import ButtonDemo from "./components/ButtonDemo.vue"
-import DialogDemo from "./components/DialogDemo.vue"
-import TabsDemo from "./components/TabsDemo.vue"
-import DocDemo from "./components/DocDemo.vue"
+const Home = import("./views/Home.vue")
+const Doc = import("./views/Doc.vue")
+const SwitchDemo = import("./components/SwitchDemo.vue")
+const ButtonDemo = import("./components/ButtonDemo.vue")
+const DialogDemo = import("./components/DialogDemo.vue")
+const TabsDemo = import("./components/TabsDemo.vue")
+const DocDemo = import("./components/DocDemo.vue")
 // 创建history对象
 const history = createWebHashHistory()
 // 创建router对象

@@ -3,12 +3,12 @@
     <div>Dialog 示例</div>
     <h1>示例1</h1>
     <Button @click="toggle">toggle</Button>
-    <Dialog :visible="dialogVisible" />
+    <Dialog v-model:visible="dialogVisible" :closeOnClickOverlay="false" :ok="ok" :cancel="cancel" />
   </div>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref } from "vue";
 import Dialog from "../lib/Dialog.vue";
 export default {
   components: { Dialog },
@@ -17,7 +17,13 @@ export default {
     const toggle = () => {
       dialogVisible.value = !dialogVisible.value;
     };
-    return { dialogVisible, toggle };
+    const ok = () => {
+      dialogVisible.value = false;
+    };
+    const cancel = () => {
+      dialogVisible.value = false;
+    };
+    return { dialogVisible, toggle, ok, cancel };
   },
 };
 </script>

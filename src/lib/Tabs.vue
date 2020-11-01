@@ -7,25 +7,19 @@
         :key="index"
         :class="{selected:til===selected}"
         @click="selectNav(til)"
-        :ref="el => {if(til === selected) selectedItems = el}"
+        :ref="el => {if(til === selected) selectedItem = el}"
       >{{til}}</div>
       <!-- 导航会动的横线 -->
       <div class="gulu-tabs-nav-indicator" ref="indicator"></div>
     </div>
   </div>
   <div class="gulu-tabs-content">
-    <component
-      class="gulu-tabs-content-item"
-      :class="{selected:c.props.title === selected}"
-      v-for="(c,index) in defaults"
-      :key="index"
-      :is="c"
-    />
+    <component :is="current" :key="current.props.title" />
   </div>
 </template>
 
 <script lang="ts">
-import { computed, onMounted, onUpdated, ref } from "vue";
+import { computed, onMounted, onUpdated, ref, watchEffect } from "vue";
 import Tab from "../lib/Tab.vue";
 export default {
   props: {
@@ -35,36 +29,42 @@ export default {
   },
   setup(props, context) {
     // 声明navItems, 是导航标签的数组
-    const selectedItems = ref<HTMLDivElement>(null);
+    const selectedItem = ref<HTMLDivElement>(null);
     // 导航宽度
     const indicator = ref<HTMLDivElement>(null);
     const container = ref<HTMLDivElement>(null);
-    const x = () => {
-      // JS计算div条的宽度
-      // divs中的每一个div是否有包含selected属性
-      // contains会返回true或false
-      const { width } = selectedItems.value.getBoundingClientRect();
-      indicator.value.style.width = width + "px";
-      // 计算出div条的运动距离
-      const { left: containerLeft } = container.value.getBoundingClientRect();
-      const { left: resultLeft } = selectedItems.value.getBoundingClientRect();
-      const left = resultLeft - containerLeft;
-      indicator.value.style.left = left + "px";
-    };
-    onMounted(x);
-    onUpdated(x);
+    onMounted(() => {
+      watchEffect(
+        () => {
+          console.log("-----------------watchEffect");
+          // JS计算div条的宽度
+          // divs中的每一个div是否有包含selected属性
+          // contains会返回true或false
+          const { width } = selectedItem.value.getBoundingClientRect();
+          indicator.value.style.width = width + "px";
+          // 计算出div条的运动距离
+          const {
+            left: containerLeft,
+          } = container.value.getBoundingClientRect();
+          const {
+            left: selectedItemLeft,
+          } = selectedItem.value.getBoundingClientRect();
+
+          const left = selectedItemLeft - containerLeft;
+          indicator.value.style.left = left + "px";
+        },
+        { flush: "post" }
+      );
+    });
     const defaults = context.slots.default();
     defaults.forEach((tag) => {
       if (tag.type !== Tab) {
         throw new Error("Tabs子标签 必须是Tab!");
       }
     });
-    const current = computed(
-      () =>
-        defaults.filter((tag) => {
-          return tag.props.title === props.selected;
-        })[0]
-    );
+    const current = computed(() => {
+      return defaults.find((tag) => tag.props.title === props.selected);
+    });
     // 所有的title
     const titles = defaults.map((item) => item.props.title);
     // 导航的选中事件
@@ -76,7 +76,7 @@ export default {
       titles,
       current,
       selectNav,
-      selectedItems,
+      selectedItem,
       indicator,
       container,
     };
@@ -116,12 +116,6 @@ $border-color: #d9d9d9;
   }
   &-content {
     padding: 8px 0;
-    &-item {
-      display: none;
-      &.selected {
-        display: block;
-      }
-    }
   }
 }
 </style>

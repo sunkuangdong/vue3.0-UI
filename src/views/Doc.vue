@@ -71,6 +71,7 @@ export default {
 
     >aside {
         flex-shrink: 0;
+        z-index: 29;
     }
 
     >main {

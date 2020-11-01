@@ -33,11 +33,11 @@ $h2: $h - 4px;
   background: #bfbfbf;
   border-radius: $h/2;
   position: relative;
-  z-index: 0;
+  z-index: 10;
 
   > span {
     position: absolute;
-    z-index: 0;
+    z-index: 10;
     top: 2px;
     left: 2px;
     height: $h2;

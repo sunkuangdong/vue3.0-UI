@@ -36,7 +36,6 @@ export default {
     onMounted(() => {
       watchEffect(
         () => {
-          console.log("-----------------watchEffect");
           // JS计算div条的宽度
           // divs中的每一个div是否有包含selected属性
           // contains会返回true或false

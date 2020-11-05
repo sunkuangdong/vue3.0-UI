@@ -56,6 +56,7 @@ export default {
   z-index: 30;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
 
   > .logo {
     max-width: 6em;

@@ -1,3 +1,6 @@
+git add . &&
+git commit -m 'updata' &&
+git push &&
 rm -rf dist &&
 yarn build &&
 cd dist &&

@@ -1,11 +1,11 @@
 import { h } from 'vue'
 import { createWebHashHistory, createRouter } from 'vue-router'
-const Home = import("./views/Home.vue")
-const Doc = import("./views/Doc.vue")
-const SwitchDemo = import("./components/SwitchDemo.vue")
-const ButtonDemo = import("./components/ButtonDemo.vue")
-const DialogDemo = import("./components/DialogDemo.vue")
-const TabsDemo = import("./components/TabsDemo.vue")
+const Home = () => import("./views/Home.vue")
+const Doc = () => import("./views/Doc.vue")
+const SwitchDemo = () => import("./components/SwitchDemo.vue")
+const ButtonDemo = () => import("./components/ButtonDemo.vue")
+const DialogDemo = () => import("./components/DialogDemo.vue")
+const TabsDemo = () => import("./components/TabsDemo.vue")
 import Markdown from "./components/Markdown.vue"
 import intro from "./markdown/intro.md"
 import getStarted from "./markdown/get-started.md"

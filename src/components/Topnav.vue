@@ -1,6 +1,6 @@
 <template>
   <div class="topnav">
-    <router-link to="/" class="logo" @click="toogleMenu">
+    <router-link to="/" class="logo">
       <svg class="icon">
         <use xlink:href="#icon-sun" />
       </svg>

@@ -5,7 +5,7 @@
 然后在你的代码中写入下面的代码, 就可以使用我提供的组件了。
 
 ```
-import {Button, Tabs, Switch, Dialog} from "gulu-ui-1"
+import {Button, Tabs, Switch, Dialog} from "vue3.0-ui"
 ```
 
 ##### Vue 单文件组件代码示例：
@@ -17,7 +17,7 @@ import {Button, Tabs, Switch, Dialog} from "gulu-ui-1"
     </div>
 </template>
 <script>
-    import {Button, Tabs, Tab, Switch, Dialog, openDialog} from "gulu-ui-1"
+    import {Button, Tabs, Tab, Switch, Dialog, openDialog} from "vue3.0-ui"
     export default {
     components: {Button}
     }

@@ -5,7 +5,7 @@
       <h1>Vue3.0 UI</h1>
       <h2>一个很厉害的 UI 框架</h2>
       <p class="actions">
-        <a href>GitHub</a>
+        <a href="https://github.com/sunkuangdong/vue3.0-UI">GitHub</a>
         <router-link to="/doc">开始</router-link>
       </p>
     </div>
